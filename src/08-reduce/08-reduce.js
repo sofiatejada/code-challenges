@@ -9,7 +9,10 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 export const countNumberOfElements = (arr) => {
-  // Solution code here...
+    let numb = arr.reduce((accum) => {
+        return accum + 1;
+    }, 0);
+    return numb;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -23,7 +26,13 @@ eye color:
 ------------------------------------------------------------------------------------------------ */
 
 export const eyeColorTally = (arr) => {
-  // Solution code here...
+    const eyeColorObj = arr.reduce((accum, current) => {
+        const color = current.eye_color;
+        accum[color] === undefined ? accum[color] = 1 : accum[color] = accum[color] + 1;
+      
+        return accum;
+    }, {});
+    return eyeColorObj;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -37,7 +46,15 @@ eye color:
 ------------------------------------------------------------------------------------------------ */
 
 export const eyeColorNames = (arr) => {
-  // Solution code here...
+    const eyeColorNameObj = arr.reduce((accum, current) => {
+        const color = current.eye_color;
+        const name = current.name;
+        if(accum[color] === undefined) accum[color] = [];
+        accum[color].push(name);
+  
+        return accum;
+    }, {});
+    return eyeColorNameObj;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -48,7 +65,14 @@ Write a function named countNumberOfChildren that, given the array of characters
 
 
 export const countNumberOfChildren = (arr) => {
-  // Solution code here...
+    const total = arr.reduce((accum, item) => {
+        if(item['children']) {
+            const numbOfChildren = item['children'].length;
+            accum = accum + numbOfChildren;
+        }
+        return accum;
+    }, 0);
+    return total;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -60,7 +84,13 @@ Hint: The accumulator should begin as { count: 0, sum: 0 }
 ------------------------------------------------------------------------------------------------ */
 
 export const calculateAverage = (arr) => {
-  // Solution code here...
+    const length = arr.length;
+
+    const average = arr.reduce((accum, item) => {
+        accum = accum + item;
+        return accum;
+    }, 0);
+    return average / length;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -72,11 +102,19 @@ You are welcome to use the provided isPrime function.
 ------------------------------------------------------------------------------------------------ */
 
 const isPrime = (value) => {
-  // Solution code here...
+    if(value % 2 === 0) {
+        return false;
+    } else {
+        return true;
+    }
 };
 
 export const countPrimeNumbers = (arr) => {
-  // Solution code here...
+    const numbOfPrimes = arr.reduce((accum, item) => {
+        isPrime(item) ? accum = accum + 1 : accum;
+        return accum;
+    }, 0);
+    return numbOfPrimes;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -90,7 +128,12 @@ Hint: The accumulator should begin as { min: 0, max: 0 }
 ------------------------------------------------------------------------------------------------ */
 
 export const effortStats = (arr) => {
-  // Solution code here...
+    const effort = arr.reduce((accum, item) => {
+        item.effort < accum.max ? accum.min = item.effort : accum;
+        item.effort > accum.max ? accum.max = item.effort : accum;
+        return accum;
+    }, { min: 0, max: 0 });
+    return effort;
 };
 
 /* ------------------------------------------------------------------------------------------------

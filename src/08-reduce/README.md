@@ -39,12 +39,12 @@ In this example, we'll take an array of objects and return back an object, keyed
     { name:'Jim', role:'Support' }
   ];
   
-  const folks = people.reduce((accumulator, person, idx) => {
+  const people2 = people.reduce((accumulator, person, idx) => {
     accumulator[person.name] = person.role;
     return accumulator;
   }, {});
   
-  // folks: 
+  // people2: 
   { 
     Fred: 'Developer',
     Suzy: 'Developer',

@@ -9,11 +9,18 @@ Then, write a function named speaker that takes in a string and a callback funct
 ------------------------------------------------------------------------------------------------ */
 
 export function greeting(message) {
-    // Solution code here...
-};
+    const newArr = [];
+    message.forEach((item) => {
+        newArr.push(item.toUpperCase());
+    });
+
+    return newArr;
+}
 
 export const speaker = (message, callback) => {
-    // Solution code here...
+    const upperCaseArr = message.split('');
+    const upperCaseStr = callback(upperCaseArr);
+    return upperCaseStr.join('');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -33,11 +40,15 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 export const addValues = (arr, value) => {
-    // Solution code here...
+    arr.push(value);
 };
 
 export const addNumbers = (num, arr, times, callback) => {
-    // Solution code here...
+    for(let i = 0; i < times; i++) {
+        callback(arr, num);
+    }
+
+    return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -55,11 +66,16 @@ Return the modified array.
 
 
 export const removeOne = (num, arr) => {
-    // Solution code here...
+    if(num % 3 === 2) {
+        arr.pop();
+    }
 };
 
 export const removeElements = (arr, callback) => {
-    // Solution code here...
+    arr.forEach((item) => {
+        callback(item, arr);
+    });
+    return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
